@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your_secret_key')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '84.252.141.70',
+    '158.160.24.121',
     'localhost',
     '127.0.0.1',
     'web',
