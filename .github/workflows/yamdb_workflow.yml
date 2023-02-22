@@ -21,6 +21,7 @@ jobs:
         python -m pip install --upgrade pip 
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
         pip install -r api_yamdb/requirements.txt 
+    
     - name: Test with pytest
       run: pytest    
 
@@ -29,6 +30,7 @@ jobs:
         python -m flake8
         cd api_yamdb/
         python manage.py test
+
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
@@ -64,6 +66,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
         script: |
           sudo docker pull narina25/yamdbv:1
           sudo docker-compose stop

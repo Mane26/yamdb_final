@@ -1,31 +1,29 @@
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
-from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework import filters, response, status, viewsets
-from rest_framework.decorators import action, api_view
-from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
-                                   ListModelMixin)
-
-from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
-
 from api.filters import TitleFilter
 from api.pagination import Pagination
 from api.permissions import (IsAdmin, IsAdminOrReadOnly,
                              IsAuthorOrAdministratorOrReadOnly)
 from api.serializers import (CategorySerializer, CommentSerializer,
                              GenreSerializer, MyUserSerializer,
-                             UserSerializer,
                              ReviewSerializer, TitleCreateSerializer,
-                             TitleSerializer, TokenSerializer)
-from api_yamdb.settings import DEFAULT_FROM_EMAIL
+                             TitleSerializer, TokenSerializer, UserSerializer)
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, response, status, viewsets
+from rest_framework.decorators import action, api_view
+from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
+                                   ListModelMixin)
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from rest_framework_simplejwt.tokens import AccessToken
 from reviews.models import Review
 from titles.models import Category, Genre, Title
 from users.models import User
+
+from api_yamdb.settings import DEFAULT_FROM_EMAIL
 
 
 class CommentViewSet(viewsets.ModelViewSet):

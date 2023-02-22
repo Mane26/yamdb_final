@@ -3,7 +3,6 @@ from django.db import models
 
 from api_yamdb.settings import message_for_reservad_name, reserved_name
 
-
 USER = "user"
 MODERATOR = "moderator"
 ADMIN = "admin"
